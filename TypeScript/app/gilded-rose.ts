@@ -21,7 +21,8 @@ export class GildedRose {
         this.items = this.items.map(item => {
             switch (item.name) {
                 case "Aged Brie":
-                    item.quality++;
+                    if (item.sellIn <= 0) item.quality += 2;
+                    else item.quality++;
                     break;
                 case "Backstage passes to a TAFKAL80ETC concert":
                     if (item.sellIn <= 0) item.quality = 0;
@@ -32,7 +33,8 @@ export class GildedRose {
                 case "Sulfuras, Hand of Ragnaros":
                     break;
                 case "Conjured Mana Cake":
-                    item.quality -= 2;
+                    if (item.sellIn <= 0) item.quality -= 4;
+                    else item.quality -= 2;
                     break;
                 default:
                     if (item.sellIn <= 0) item.quality -= 2;

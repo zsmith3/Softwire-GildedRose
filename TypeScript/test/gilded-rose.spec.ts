@@ -39,6 +39,12 @@ describe('Gilded Rose', function () {
         expect(items[0].quality).to.equal(11);
     });
 
+    it('increase quality of Aged Brie twice as fast after sell by date', function() {
+        const gildedRose = new GildedRose([ new Item('Aged Brie', 0, 10) ]);
+        const items = gildedRose.updateQuality();
+        expect(items[0].quality).to.equal(12);
+    });
+
     it('maintain quality below 50', function() {
         const gildedRose = new GildedRose([ new Item('Aged Brie', 10, 50) ]);
         const items = gildedRose.updateQuality();
@@ -80,6 +86,12 @@ describe('Gilded Rose', function () {
         const gildedRose = new GildedRose([ new Item('Conjured Mana Cake', 10, 10) ]);
         const items = gildedRose.updateQuality();
         expect(items[0].quality).to.equal(8);
+    });
+
+    it('degrade quality of conjured items four times as fast after sell by date', function() {
+        const gildedRose = new GildedRose([ new Item('Conjured Mana Cake', 0, 10) ]);
+        const items = gildedRose.updateQuality();
+        expect(items[0].quality).to.equal(6);
     });
 
 });
