@@ -13,6 +13,8 @@ export class Item {
 export class GildedRose {
     items: Item[];
 
+    private readonly maxQuality = 50;
+
     constructor(items: Item[] = []) {
         this.items = items;
     }
@@ -43,7 +45,7 @@ export class GildedRose {
             }
 
             item.quality = Math.max(item.quality, 0);
-            item.quality = Math.min(item.quality, 50);
+            item.quality = Math.min(item.quality, this.maxQuality);
 
             if (item.name !== "Sulfuras, Hand of Ragnaros") item.sellIn--;
 
